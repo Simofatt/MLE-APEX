@@ -1,0 +1,283 @@
+---
+# ====== Page: List of Hackathon =============================
+id: 6
+identification: 
+  name: List of Hackathon
+  alias: LIST-OF-HACKATHON
+  title: List of Hackathon
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Breadcrumb ==================================
+  id: 13425293751149759
+  identification: 
+    name: Breadcrumb
+    type: Breadcrumb
+
+  source: 
+    breadcrumb: Breadcrumb # 10006744945725271
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Title Bar
+    template-options: 
+    - '#DEFAULT#'
+    - t-BreadcrumbRegion--useBreadcrumbTitle
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb
+      template-options: 
+      - '#DEFAULT#'
+
+- # ====== Region: List of Hackathon ===========================
+  id: 13425903338149760
+  identification: 
+    name: List of Hackathon
+    title: List of Hackathon
+    type: Cards
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: HACKATHON
+    include-rowid-column: false
+
+  order-by: 
+    type: None
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Cards Container
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-sparkles
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 10967404069857136
+    appearance: 
+      layout: Grid
+      grid-columns: Auto
+
+    card: 
+      primary-key-column-1: ID
+      primary-key-column-2: TOPIC
+
+    title: 
+      advanced-formatting: false
+      column: TOPIC
+
+    subtitle: 
+      advanced-formatting: false
+
+    body: 
+      advanced-formatting: false
+      column: DESCRIPTION
+
+    secondary-body: 
+      advanced-formatting: false
+      column: REGISTRATION_DEADLINE
+
+    icon-and-badge: 
+      icon-source: No Icon
+
+    media: 
+      advanced-formatting: false
+      source: No Media
+
+    performance: 
+      lazy-loading: false
+
+    pagination: 
+      type: Scroll
+      show-total-count: false
+
+    actions: 
+    - # ====== Action: Full Card ===================================
+      id: 17535215352385809
+      identification: 
+        type: Full Card
+
+      layout: 
+        sequence: 10
+
+      link: 
+        type: Redirect to Page in this Application
+        target: 
+          url: 'f?p=&APP_ID.:25:&SESSION.::&DEBUG.::P25_HACKATHON_ID:&ID.'
+          page: 25 # List of the teams
+          values: 
+            p25_hackathon_id: '&ID.'
+
+      server-side-condition: 
+        type: Expression
+        language: SQL
+        sql-expression: |
+          APEX_ACL.HAS_USER_ROLE(
+              p_role_static_id => 'ADMINISTRATOR'
+          ) = true
+        execute-condition: For Each Row
+
+    - # ====== Action: Full Card ===================================
+      id: 17536429919385821
+      identification: 
+        type: Full Card
+
+      layout: 
+        sequence: 20
+
+      link: 
+        type: Redirect to Page in this Application
+        target: 
+          url: 'f?p=&APP_ID.:27:&SESSION.::&DEBUG.::P27_HACKATHON_ID:&ID.'
+          page: 27 # Hackathon Details
+          values: 
+            p27_hackathon_id: '&ID.'
+
+      server-side-condition: 
+        type: Expression
+        language: SQL
+        sql-expression: |
+          APEX_ACL.HAS_USER_ROLE(
+              p_role_static_id => 'ADMINISTRATOR'
+          ) = false
+        execute-condition: For Each Row
+
+page-items: 
+- # ====== Page Item: P6_ORDER_BY ==============================
+  id: 13426945269149760
+  identification: 
+    name: P6_ORDER_BY
+    type: Select List
+
+  label: 
+    label: Order By
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 10
+    region: List of Hackathon # 13425903338149760
+    slot: ORDER_BY_ITEM
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: Static Values
+    static-values: 'STATIC2:Topic;TOPIC,End Date;END_DATE,Start Date;START_DATE'
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Ignore
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: TOPIC
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+

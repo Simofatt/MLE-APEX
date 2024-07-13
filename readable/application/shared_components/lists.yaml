@@ -1,0 +1,417 @@
+---
+- # ====== List: Navigation Menu ===============================
+  id: 10007227334725271
+  identification: 
+    name: Navigation Menu
+
+  subscription: 
+    version-number: 24096899
+
+  source: 
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: Home =========================================
+    id: 10310295051725388
+    label: 
+      label: Home
+
+    icon: 
+      image/icon-css-classes: fa-home
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+        page: 1 # Home
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Administration ===============================
+    id: 10372406774725446
+    label: 
+      label: Administration
+
+    icon: 
+      image/icon-css-classes: fa-user-wrench
+
+    layout: 
+      sequence: 10000
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:10000:&APP_SESSION.::&DEBUG.:::'
+        page: 10000 # Administration
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: Administration Rights # 10300871805725383
+
+  - # ====== Entry: Register Hackathon ===========================
+    id: 12453803654087473
+    label: 
+      label: Register Hackathon
+
+    icon: 
+      image/icon-css-classes: fa-forms
+
+    layout: 
+      sequence: 30
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 5
+      - 7
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:5:&SESSION.::&DEBUG.::::'
+        page: 5 # Register Hackathon
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: Administration Rights # 10300871805725383
+
+  - # ====== Entry: List of Hackathon ============================
+    id: 13424828750149759
+    label: 
+      label: List of Hackathon
+
+    icon: 
+      image/icon-css-classes: fa-cards
+
+    layout: 
+      sequence: 40
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 6
+      - 9
+      - 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:6:&APP_SESSION.::&DEBUG.:::'
+        page: 6 # List of Hackathon
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+  - # ====== Entry: Winners ======================================
+    id: 19397635179345556
+    label: 
+      label: Winners
+
+    icon: 
+      image/icon-css-classes: fa-area-chart
+
+    layout: 
+      sequence: 50
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 34
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:34:&SESSION.::&DEBUG.::::'
+        page: 34 # Winners
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    security: 
+      authorization-scheme: Administration Rights # 10300871805725383
+
+- # ====== List: Navigation Bar ================================
+  id: 10296536515725381
+  identification: 
+    name: Navigation Bar
+
+  subscription: 
+    version-number: 21963271
+
+  source: 
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: Install App ==================================
+    id: 10370636894725445
+    label: 
+      label: Install App
+
+    icon: 
+      image/icon-css-classes: fa-cloud-download
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Never
+
+    link: 
+      target: '#action$a-pwa-install'
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+      2.: a-pwaInstall
+
+  - # ====== Entry: &APP_USER. ===================================
+    id: 10370934259725446
+    label: 
+      label: '&APP_USER.'
+
+    icon: 
+      image/icon-css-classes: fa-user
+
+    layout: 
+      sequence: 20
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: '#'
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+      2.: has-username
+
+  - # ====== Entry: --- ==========================================
+    id: 10371432472725446
+    label: 
+      label: '---'
+
+    layout: 
+      sequence: 30
+      parent-entry: '&APP_USER.' # 10370934259725446
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: separator
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    server-side-condition: 
+      type: User is Authenticated (not public)
+
+  - # ====== Entry: Sign Out =====================================
+    id: 10371803542725446
+    label: 
+      label: Sign Out
+
+    icon: 
+      image/icon-css-classes: fa-sign-out
+
+    layout: 
+      sequence: 40
+      parent-entry: '&APP_USER.' # 10370934259725446
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: '&LOGOUT_URL.'
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+    server-side-condition: 
+      type: User is Authenticated (not public)
+
+- # ====== List: Page Navigation ===============================
+  id: 10329097926725407
+  identification: 
+    name: Page Navigation
+
+  subscription: 
+    version-number: 21963260
+
+  source: 
+    type: Static Values
+
+  entries: 
+  - # ====== Entry: Participants Registration ====================
+    id: 10329491943725407
+    label: 
+      label: Participants Registration
+
+    icon: 
+      image/icon-css-classes: fa-forms
+
+    layout: 
+      sequence: 20
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:2:&APP_SESSION.::&DEBUG.:::'
+        page: 2 # Participants Registration
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
+- # ====== List: User Interface ================================
+  id: 10373561518725447
+  identification: 
+    name: User Interface
+
+  subscription: 
+    version-number: 21963274
+
+  source: 
+    type: Static Values
+
+  configuration: 
+    build-option: 'Feature: Theme Style Selection' # 10299749518725383
+
+  entries: 
+  - # ====== Entry: Theme Style Selection ========================
+    id: 10373906316725447
+    label: 
+      label: Theme Style Selection
+
+    icon: 
+      image/icon-css-classes: fa-paint-brush
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:10010:&APP_SESSION.::&DEBUG.:10010::'
+        page: 10010 # Application Appearance
+        clear-cache: 10010
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+      1.: Set the default application look and feel
+
+    configuration: 
+      build-option: 'Feature: Theme Style Selection' # 10299749518725383
+
+- # ====== List: Access Control ================================
+  id: 10374246904725447
+  identification: 
+    name: Access Control
+
+  subscription: 
+    version-number: 21963274
+
+  source: 
+    type: Static Values
+
+  configuration: 
+    build-option: 'Feature: Access Control' # 10298961621725383
+
+  entries: 
+  - # ====== Entry: Users ========================================
+    id: 10374600234725447
+    label: 
+      label: Users
+
+    icon: 
+      image/icon-css-classes: fa-users
+
+    layout: 
+      sequence: 10
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:10021:&APP_SESSION.::&DEBUG.:RP::'
+        page: 10021 # Manage User Access
+        clear-cache: RP
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+      1.: Set level of access for authenticated users of this application
+
+  - # ====== Entry: Access Control ===============================
+    id: 10375023944725447
+    label: 
+      label: Access Control
+
+    icon: 
+      image/icon-css-classes: fa-key
+
+    layout: 
+      sequence: 20
+
+    is-current: 
+      type: Target Page
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:10020:&APP_SESSION.::&DEBUG.:::'
+        page: 10020 # Configure Access Control
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+      1.: Change access control settings and disable access control
+

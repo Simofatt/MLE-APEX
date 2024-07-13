@@ -1,0 +1,321 @@
+---
+# ====== Page: List of the teams =============================
+id: 25
+identification: 
+  name: List of the teams
+  alias: LIST_OF_TEAMS
+  title: List of the teams
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Breadcrumb ==================================
+  id: 17532497837381845
+  identification: 
+    name: Breadcrumb
+    type: Breadcrumb
+
+  source: 
+    breadcrumb: Breadcrumb # 10006744945725271
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Title Bar
+    template-options: 
+    - '#DEFAULT#'
+    - t-BreadcrumbRegion--useBreadcrumbTitle
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb
+      template-options: 
+      - '#DEFAULT#'
+
+- # ====== Region: List of the teams ===========================
+  id: 17533196699381845
+  identification: 
+    name: List of the teams
+    type: Cards
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TABLE_TEAMS
+    include-rowid-column: false
+    where-clause: 'HACKATHON_ID=:P25_HACKATHON_ID'
+
+  order-by: 
+    type: Item
+    item: 
+      item-name: P25_ORDER_BY
+      order-bys: 
+      - key: TEAMNAME
+        clause: '"TEAMNAME" asc'
+
+      - key: ID
+        clause: '"ID" asc'
+
+      - key: QRCODE
+        clause: '"QRCODE" asc'
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Cards Container
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 17533697464381845
+    appearance: 
+      layout: Grid
+      grid-columns: Auto
+
+    card: 
+      primary-key-column-1: ID
+
+    title: 
+      advanced-formatting: false
+      column: TEAMNAME
+
+    subtitle: 
+      advanced-formatting: false
+
+    body: 
+      advanced-formatting: false
+      column: HACKATHON_ID
+
+    secondary-body: 
+      advanced-formatting: false
+
+    icon-and-badge: 
+      icon-source: Initials
+      icon-column: REGISTRATIONTIME
+      icon-position: Start
+      badge-column: QRCODE
+
+    media: 
+      advanced-formatting: false
+      source: No Media
+
+    performance: 
+      lazy-loading: false
+
+    pagination: 
+      type: Scroll
+      show-total-count: false
+
+    actions: 
+    - # ====== Action: Full Card ===================================
+      id: 17535057528385807
+      identification: 
+        type: Full Card
+
+      layout: 
+        sequence: 10
+
+      link: 
+        type: Redirect to Page in this Application
+        target: 
+          url: 'f?p=&APP_ID.:26:&SESSION.::&DEBUG.::P26_ID:&ID.'
+          page: 26 # Full Card Action
+          values: 
+            p26_id: '&ID.'
+
+        link-attributes: '&ID.'
+
+page-items: 
+- # ====== Page Item: P25_ORDER_BY =============================
+  id: 17534123899381846
+  identification: 
+    name: P25_ORDER_BY
+    type: Select List
+
+  label: 
+    label: Order By
+    alignment: Right
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 10
+    region: List of the teams # 17533196699381845
+    slot: ORDER_BY_ITEM
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: true
+
+  list-of-values: 
+    type: Static Values
+    static-values: 'STATIC2:Teamname;TEAMNAME,Id;ID,Qrcode;QRCODE'
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Ignore
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: TEAMNAME
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P25_HACKATHON_ID =========================
+  id: 17536559211385822
+  identification: 
+    name: P25_HACKATHON_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+processes: 
+- # ====== Process: New ========================================
+  id: 17535768178385814
+  identification: 
+    name: New
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: JavaScript (MLE)
+    javascript-code: |
+      const result = session.execute('select PROFILE_IMAGE from EBA_DEMO_CARD_EMP');
+      
+      const arr = [];
+      for(let row of result.rows) {
+          arr.push(row.PROFILE_IMAGE); 
+      }
+      
+      console.log('aaaaa',arr);
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+

@@ -1,0 +1,355 @@
+---
+# ====== Page: Full Card Action ==============================
+id: 26
+identification: 
+  name: Full Card Action
+  alias: FULL-CARD-ACTION
+  title: Full Card Action
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: false
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Card Actions ================================
+  id: 10777446118007959946
+  identification: 
+    name: Card Actions
+    type: Cards
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      select ID,
+             FIRSTNAME,
+             LASTNAME,
+             EMAIL,
+             TEAMID,
+             LAB,
+             "HACKATHON-ID"
+        from TABLE_PARTICIPANTS
+       WHERE TEAMID=:P26_ID;
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Cards Container
+    template-options: 
+    - '#DEFAULT#'
+    - t-CardsRegion--styleB
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 17641498661224963
+    appearance: 
+      layout: Grid
+      grid-columns: Auto
+
+    title: 
+      advanced-formatting: false
+      column: FIRSTNAME
+
+    subtitle: 
+      advanced-formatting: false
+      column: LASTNAME
+
+    body: 
+      advanced-formatting: true
+      html-expression: '<p id="myp">name is : &FIRSTNAME.</p>'
+
+    secondary-body: 
+      advanced-formatting: false
+      column: LAB
+
+    icon-and-badge: 
+      icon-source: Icon Class
+      icon-css-classes: fa-user-man
+      icon-position: Start
+      icon-description: '&FIRSTNAME.'
+
+    media: 
+      advanced-formatting: false
+      source: No Media
+
+    performance: 
+      lazy-loading: false
+
+    pagination: 
+      type: Scroll
+      show-total-count: false
+
+page-items: 
+- # ====== Page Item: P26_ID ===================================
+  id: 17535652779385813
+  identification: 
+    name: P26_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 30
+    region: Card Actions # 10777446118007959946
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P26_POINTS ===============================
+  id: 19197728809537802
+  identification: 
+    name: P26_POINTS
+    type: Number Field
+
+  label: 
+    label: Points
+    alignment: Left
+
+  settings: 
+    minimum-value: 0
+    maximum-value: 200
+    number-alignment: Start
+    virtual-keyboard: Decimal
+
+  layout: 
+    sequence: 40
+    region: Card Actions # 10777446118007959946
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: SQL Query (return single value)
+    sql-query: 'SELECT POINTS FROM TABLE_TEAMS WHERE ID=:P26_ID'
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P26_ORDER_BY =============================
+  id: 5713586488380338909
+  identification: 
+    name: P26_ORDER_BY
+    type: Select List
+
+  label: 
+    label: Order By
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 10
+    region: Card Actions # 10777446118007959946
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Static Values
+    static-values: 'STATIC2:Lname;LASTNAME'
+    display-extra-values: true
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: Save ========================================
+  id: 19197836846537803
+  identification: 
+    button-name: Save
+    label: Save
+
+  layout: 
+    sequence: 50
+    region: Card Actions # 10777446118007959946
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+
+dynamic-actions: 
+- # ====== Dynamic Action: New =================================
+  id: 19197920529537804
+  identification: 
+    name: New
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: Button
+    button: Save # 19197836846537803
+
+  client-side-condition: 
+    type: JavaScript expression
+    javascript-expression: session.execute('UPDATE TABLE WHERE ');
+
+processes: 
+- # ====== Process: New ========================================
+  id: 19198369927537808
+  identification: 
+    name: New
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: JavaScript (MLE)
+    javascript-code: |2
+        
+        const binds = {
+              point: apex.env.P26_POINTS,
+              id: apex.env.P26_ID
+          }
+      console.log('alhabib',apex.env.P26_ID);
+      session.execute('UPDATE TABLE_TEAMS SET POINTS=:point where ID=:id', binds)
+      
+      
+      
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+

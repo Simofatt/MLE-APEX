@@ -1,0 +1,1268 @@
+---
+# ====== Page: Register Hackathon ============================
+id: 5
+identification: 
+  name: Register Hackathon
+  alias: REGISTER-HACKATHON
+  title: Register Hackathon
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Breadcrumb ==================================
+  id: 12454246826087473
+  identification: 
+    name: Breadcrumb
+    type: Breadcrumb
+
+  source: 
+    breadcrumb: Breadcrumb # 10006744945725271
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Title Bar
+    template-options: 
+    - '#DEFAULT#'
+    - t-BreadcrumbRegion--useBreadcrumbTitle
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    appearance: 
+      breadcrumb-template: Breadcrumb
+      template-options: 
+      - '#DEFAULT#'
+
+- # ====== Region: Register Hackathon ==========================
+  id: 12454907958087483
+  identification: 
+    name: Register Hackathon
+    type: Form
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: HACKATHON
+    include-rowid-column: false
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    edit: 
+      enabled: true
+      allowed-operations: 
+      - Add Row
+      - Update Row
+      - Delete Row
+      lost-update-type: Row Values
+
+- # ====== Region: Map =========================================
+  id: 17538467489385841
+  identification: 
+    name: Map
+    type: Map
+
+  source: 
+    location: None
+
+  layout: 
+    sequence: 140
+    parent-region: Register Hackathon # 12454907958087483
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--scrollBody
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 17538585626385842
+    map: 
+      background: Default
+      height: 640
+
+    controls: 
+      navigation-bar: Zoom and Compass
+      navigation-bar-position: End
+      options: 
+      - Scale Bar
+      - Infinite Map
+      - Rectangle Zoom
+
+    initial-position-and-zoom: 
+      type: Based on Spatial Results
+
+    legend: 
+      show: true
+      position: End
+
+    attributes: 
+      messages-position: Below
+      unit-system: Metric
+
+    performance: 
+      lazy-loading: true
+
+    layers: 
+    - # ====== Layer: New ==========================================
+      id: 17538673627385843
+      identification: 
+        name: New
+        layer-type: Points
+
+      layout: 
+        sequence: 10
+
+      source: 
+        location: Local Database
+        type: SQL Query
+        sql-query: 'select to_number(:P5_LON) lon, to_number(:P5_LAT) lat from dual where :P5_LON is not null and :P5_LAT is not null'
+        page-items-to-submit: 
+        - P5_LON
+        - P5_LAT
+        use-spatial-index: false
+
+      column-mapping: 
+        geometry-column-data-type: Longitude/Latitude
+        longitude-column: LAT
+        latitude-column: LON
+
+      point-objects: 
+        style: SVG
+        shape: Default
+
+      point-clustering: 
+        enable: false
+
+      tooltip: 
+        advanced-formatting: false
+
+      info-window: 
+        advanced-formatting: false
+
+      legend: 
+        show: true
+        enable-to-hide: true
+
+page-items: 
+- # ====== Page Item: P5_TEAM_NUMBERS ==========================
+  id: 6173115914386210
+  identification: 
+    name: P5_TEAM_NUMBERS
+    type: Number Field
+
+  label: 
+    label: Team numbers
+    alignment: Left
+
+  settings: 
+    number-alignment: Start
+    virtual-keyboard: Decimal
+
+  layout: 
+    sequence: 60
+    region: Register Hackathon # 12454907958087483
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P5_NUMBER_PARTICIPANT ====================
+  id: 6174054638386219
+  identification: 
+    name: P5_NUMBER_PARTICIPANT
+    type: Number Field
+
+  label: 
+    label: Number of participant
+    alignment: Left
+
+  settings: 
+    number-alignment: Start
+    virtual-keyboard: Decimal
+
+  layout: 
+    sequence: 70
+    region: Register Hackathon # 12454907958087483
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Register Hackathon # 12454907958087483
+    column: NUMBER_PARTICIPANTS
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P5_DEADLINE ==============================
+  id: 6174126857386220
+  identification: 
+    name: P5_DEADLINE
+    type: Date Picker
+
+  label: 
+    label: Deadline for registration
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: None
+    maximum-date: None
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 80
+    region: Register Hackathon # 12454907958087483
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Register Hackathon # 12454907958087483
+    column: REGISTRATION_DEADLINE
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P5_WIFI_NAME =============================
+  id: 10968221694857144
+  identification: 
+    name: P5_WIFI_NAME
+    type: Text Field
+
+  label: 
+    label: network name
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 90
+    region: Register Hackathon # 12454907958087483
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 180
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Register Hackathon # 12454907958087483
+    column: WIFI_SSID
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P5_WIFI_PASSWORD =========================
+  id: 10968351288857145
+  identification: 
+    name: P5_WIFI_PASSWORD
+    type: Password
+
+  label: 
+    label: network password
+    alignment: Left
+
+  settings: 
+    submit-when-enter-pressed: true
+
+  layout: 
+    sequence: 100
+    region: Register Hackathon # 12454907958087483
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 100
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Register Hackathon # 12454907958087483
+    column: WIFI_PASS
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P5_ID ====================================
+  id: 12455304634087483
+  identification: 
+    name: P5_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Register Hackathon # 12454907958087483
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Register Hackathon # 12454907958087483
+    column: ID
+    data-type: NUMBER
+    query-only: false
+    primary-key: true
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Checksum Required - Session Level
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P5_TOPIC =================================
+  id: 12455741107087483
+  identification: 
+    name: P5_TOPIC
+    type: Text Field
+
+  label: 
+    label: Topic
+    alignment: Right
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 20
+    region: Register Hackathon # 12454907958087483
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Register Hackathon # 12454907958087483
+    column: TOPIC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P5_START_DATE ============================
+  id: 12456147953087483
+  identification: 
+    name: P5_START_DATE
+    type: Date Picker
+
+  label: 
+    label: Start Date
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: None
+    maximum-date: None
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 40
+    region: Register Hackathon # 12454907958087483
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Register Hackathon # 12454907958087483
+    column: START_DATE
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P5_END_DATE ==============================
+  id: 12456554467087484
+  identification: 
+    name: P5_END_DATE
+    type: Date Picker
+
+  label: 
+    label: End Date
+    alignment: Left
+
+  settings: 
+    show-time: false
+    display-as: Popup
+    minimum-date: None
+    maximum-date: None
+    multiple-months: No
+    use-defaults: true
+
+  layout: 
+    sequence: 50
+    region: Register Hackathon # 12454907958087483
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: false
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Register Hackathon # 12454907958087483
+    column: END_DATE
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P5_WIFI_PASSWORD_1 =======================
+  id: 17538320399385840
+  identification: 
+    name: P5_WIFI_PASSWORD_1
+    type: Password
+
+  label: 
+    label: network password
+    alignment: Left
+
+  settings: 
+    submit-when-enter-pressed: true
+
+  layout: 
+    sequence: 110
+    region: Register Hackathon # 12454907958087483
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Required - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 32
+
+  validation: 
+    value-required: true
+    maximum-length: 255
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Register Hackathon # 12454907958087483
+    column: TOPIC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: Commented Out # 10006140789725271
+
+- # ====== Page Item: P5_LON ===================================
+  id: 17538880227385845
+  identification: 
+    name: P5_LON
+    type: Number Field
+
+  label: 
+    label: LONG
+    alignment: Left
+
+  settings: 
+    number-alignment: Start
+    virtual-keyboard: Decimal
+
+  layout: 
+    sequence: 120
+    region: Register Hackathon # 12454907958087483
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Register Hackathon # 12454907958087483
+    column: LON
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P5_LAT ===================================
+  id: 17538946307385846
+  identification: 
+    name: P5_LAT
+    type: Number Field
+
+  label: 
+    label: LAT
+    alignment: Left
+
+  settings: 
+    number-alignment: Start
+    virtual-keyboard: Decimal
+
+  layout: 
+    sequence: 130
+    region: Register Hackathon # 12454907958087483
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: Register Hackathon # 12454907958087483
+    column: LAT
+    data-type: NUMBER
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CANCEL ======================================
+  id: 12458137449087484
+  identification: 
+    button-name: CANCEL
+    label: Cancel
+
+  layout: 
+    sequence: 10
+    region: Register Hackathon # 12454907958087483
+    slot: CLOSE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+      page: 1 # Home
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: DELETE ======================================
+  id: 12458752917087484
+  identification: 
+    button-name: DELETE
+    label: Delete
+
+  layout: 
+    sequence: 20
+    region: Register Hackathon # 12454907958087483
+    slot: DELETE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: false
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL DELETE action
+
+  confirmation: 
+    message: '&APP_TEXT$DELETE_MSG!RAW.'
+    style: Danger
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P5_ID
+
+- # ====== Button: SAVE ========================================
+  id: 12459175466087484
+  identification: 
+    button-name: SAVE
+    label: Apply Changes
+
+  layout: 
+    sequence: 30
+    region: Register Hackathon # 12454907958087483
+    slot: CHANGE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL UPDATE action
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P5_ID
+
+- # ====== Button: CREATE ======================================
+  id: 12459587943087485
+  identification: 
+    button-name: CREATE
+    label: Create
+
+  layout: 
+    sequence: 40
+    region: Register Hackathon # 12454907958087483
+    slot: CREATE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    show-processing: false
+    warn-on-unsaved-changes: Do Not Check
+    database-action: SQL INSERT action
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P5_ID
+
+dynamic-actions: 
+- # ====== Dynamic Action: New =================================
+  id: 17539010604385847
+  identification: 
+    name: New
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: NATIVE_MAP_REGION|REGION TYPE|spatialmapclick
+    selection-type: Region
+    region: Map # 17538467489385841
+
+  actions: 
+  - # ====== Action: Set Lat =====================================
+    id: 17539145862385848
+    identification: 
+      name: Set Lat
+      action: Set Value
+
+    settings: 
+      set-type: JavaScript Expression
+      javascript-expression: this.data?.lng
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P5_LAT
+
+    execution: 
+      sequence: 20
+      event: New # 17539010604385847
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Set Lng =====================================
+    id: 17539291493385849
+    identification: 
+      name: Set Lng
+      action: Set Value
+
+    settings: 
+      set-type: JavaScript Expression
+      javascript-expression: this.data?.lat
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P5_LON
+
+    execution: 
+      sequence: 30
+      event: New # 17539010604385847
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Refresh =====================================
+    id: 19197630757537801
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: Map # 17538467489385841
+
+    execution: 
+      sequence: 40
+      event: New # 17539010604385847
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+validations: 
+- # ====== Validation: New =====================================
+  id: 10967773938857139
+  identification: 
+    name: New
+
+  execution: 
+    sequence: 10
+
+  validation: 
+    type: Expression
+    language: JavaScript (MLE)
+    javascript-expression: apex.env.P5_END_DATE > apex.env.P5_START_DATE
+    always-execute: false
+
+  error: 
+    error-message: "the end date can't be before the actual hackathon start date "
+    display-location: Inline with Field and in Notification
+    associated-item: P5_END_DATE # 12456554467087484
+
+- # ====== Validation: New_1 ===================================
+  id: 10967904230857141
+  identification: 
+    name: New_1
+
+  execution: 
+    sequence: 20
+
+  validation: 
+    type: Expression
+    language: JavaScript (MLE)
+    javascript-expression: |
+      //const { default: Date } = await import ("datejs");
+      //Date.today() > apex.env.P5_START_DATE
+      (await import ("datejs")).default.today() > apex.env.P5_START_DATE
+    always-execute: false
+
+  error: 
+    error-message: you can't setup the start date in the past
+    display-location: Inline with Field and in Notification
+    associated-item: P5_START_DATE # 12456147953087483
+
+- # ====== Validation: New_2 ===================================
+  id: 10968077828857142
+  identification: 
+    name: New_2
+
+  execution: 
+    sequence: 30
+
+  validation: 
+    type: Expression
+    language: JavaScript (MLE)
+    javascript-expression: |
+      //const { default: Date } = await import ("datejs");
+      //Date.today() > apex.env.P5_START_DATE
+      (await import ("datejs")).default.today() > apex.env.P5_DEADLINE || apex.env.P5_START_DATE <  apex.env.P5_DEADLINE
+    always-execute: false
+
+  error: 
+    error-message: you can't setup the deadline as the start date. and you can't setup the deadline after the start date
+    display-location: Inline with Field and in Notification
+    associated-item: P5_DEADLINE # 6174126857386220
+
+processes: 
+- # ====== Process: New ========================================
+  id: 6173728181386216
+  identification: 
+    name: New
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: JavaScript (MLE)
+    javascript-code: |
+      console.log('num', apex.env.P5_TEAM_NUMBERS)
+      
+      for(let i=0;i<apex.env.P5_TEAM_NUMBERS;i++) { 
+          const binds = {
+              name: 'team' + (i+1), 
+              t: new Date(),
+              qr: 'test',
+              id: apex.env.P5_ID
+          }
+          session.execute('INSERT INTO TABLE_TEAMS(TeamName, REGISTRATIONTIME, QRCode, HACKATHON_ID) VALUES (:name,:t,:qr,:id)', binds)
+      }
+      
+      const result = session.execute('SELECT * FROM TABLE_TEAMS');
+      console.log('alhabib', JSON.stringify(result));
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: Initialize form Register Hackathon =========
+  id: 12460377065087485
+  identification: 
+    name: Initialize form Register Hackathon
+    type: Form - Initialization
+    execution-chain: None
+    form-region: Register Hackathon # 12454907958087483
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Process form Register Hackathon ============
+  id: 12460755734087485
+  identification: 
+    name: Process form Register Hackathon
+    type: Form - Automatic Row Processing (DML)
+    execution-chain: None
+    form-region: Register Hackathon # 12454907958087483
+
+  settings: 
+    target-type: Region Source
+    prevent-lost-updates: true
+    lock-row: Yes
+    return-primary-key(s)-after-insert: true
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+branches: 
+- # ====== Branch: Go To Page 1 ================================
+  id: 12459898821087485
+  identification: 
+    name: Go To Page 1
+
+  execution: 
+    sequence: 1
+    point: After Processing
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
+      page: 1 # Home
+

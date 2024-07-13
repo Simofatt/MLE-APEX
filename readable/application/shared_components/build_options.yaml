@@ -1,0 +1,46 @@
+---
+- # ====== Build Option: Commented Out =========================
+  id: 10006140789725271
+  identification: 
+    name: Commented Out
+
+  status: 
+    status: Exclude
+    default-on-export: Same as Current Status
+    on-upgrade-keep-status: false
+
+  subscription: 
+    version-number: 21962051
+
+- # ====== Build Option: Feature: Access Control ===============
+  id: 10298961621725383
+  identification: 
+    name: 'Feature: Access Control'
+
+  status: 
+    status: Include
+    default-on-export: Same as Current Status
+    on-upgrade-keep-status: false
+
+  comments: 
+    comments: Incorporate role based user authentication within your application and manage username mappings to application roles.
+
+  subscription: 
+    version-number: 21963185
+
+- # ====== Build Option: Feature: Theme Style Selection ========
+  id: 10299749518725383
+  identification: 
+    name: 'Feature: Theme Style Selection'
+
+  status: 
+    status: Include
+    default-on-export: Same as Current Status
+    on-upgrade-keep-status: false
+
+  comments: 
+    comments: 'Allow administrators to select a default color scheme (theme style) for the application. Administrators can also choose to allow end users to choose their own theme style. '
+
+  subscription: 
+    version-number: 21963185
+

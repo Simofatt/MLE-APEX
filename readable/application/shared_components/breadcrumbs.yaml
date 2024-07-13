@@ -1,0 +1,133 @@
+---
+- # ====== Breadcrumb: Breadcrumb ==============================
+  id: 10006744945725271
+  identification: 
+    name: Breadcrumb
+
+  entries: 
+  - # ====== Entry: Home =========================================
+    id: 10006945353725271
+    identification: 
+      name: Home
+      page-number: 1
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
+        page: 1 # Home
+
+  - # ====== Entry: Participants Registration ====================
+    id: 10322644111725404
+    identification: 
+      name: Participants Registration
+      page-number: 2
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:2:&APP_SESSION.::&DEBUG.:::'
+        page: 2 # Participants Registration
+
+  - # ====== Entry: Administration ===============================
+    id: 10373371211725446
+    identification: 
+      name: Administration
+      page-number: 10000
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:10000:&APP_SESSION.::&DEBUG.:::'
+        page: 10000 # Administration
+
+  - # ====== Entry: Register Hackathon ===========================
+    id: 12454722859087473
+    identification: 
+      name: Register Hackathon
+      page-number: 5
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:5:&APP_SESSION.::&DEBUG.:::'
+        page: 5 # Register Hackathon
+
+  - # ====== Entry: List of Hackathon ============================
+    id: 13425781831149759
+    identification: 
+      name: List of Hackathon
+      page-number: 6
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:6:&APP_SESSION.::&DEBUG.:::'
+        page: 6 # List of Hackathon
+
+  - # ====== Entry: Teams list ===================================
+    id: 17532969484381845
+    identification: 
+      name: Teams list
+      page-number: 25
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:25:&SESSION.::&DEBUG.:::'
+        page: 25 # List of the teams
+
+  - # ====== Entry: Hackathon Details ============================
+    id: 18062406301919667
+    identification: 
+      name: Hackathon Details
+      page-number: 27
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:27:&APP_SESSION.::&DEBUG.:::'
+        page: 27 # Hackathon Details
+
+  - # ====== Entry: Details Of The Hackathon =====================
+    id: 18120229210987681
+    identification: 
+      name: Details Of The Hackathon
+      page-number: 31
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:31:&APP_SESSION.::&DEBUG.:::'
+        page: 31 # Details Of The Hackathon
+
+  - # ====== Entry: Winners ======================================
+    id: 19398510113345557
+    identification: 
+      name: Winners
+      page-number: 34
+
+    execution: 
+      sequence: 10
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:34:&APP_SESSION.::&DEBUG.:::'
+        page: 34 # Winners
+
